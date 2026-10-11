@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معرض أعمال المونتير | Video Editor Portfolio</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(22, 27, 34, 0.75);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary: #8a2be2;
+            --primary-glow: rgba(138, 43, 226, 0.4);
+            --accent: #00f2fe;
+            --text-main: #f0f6fc;
+            --text-muted: #8b949e;
+            --radius-lg: 18px;
+            --radius-md: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 12, 16, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, var(--primary), #4a00e0);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 5% 80px;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top center, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 750px;
+            margin: 0 auto 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #4a00e0);
+            color: white;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--primary-glow);
+        }
+
+        .btn-outline {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 5% 40px;
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .about-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .about-img-container {
+            width: 100%;
+            max-width: 250px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent);
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.2);
+            margin: 0 auto;
+        }
+
+        .about-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-skills-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: rgba(138, 43, 226, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--text-main);
+            padding: 6px 16px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            direction: ltr;
+        }
+
+        /* Origin Story Section (أول فيديو - من هنا بدأت القصة) */
+        .origin-section {
+            padding: 50px 5% 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .origin-video-card {
+            max-width: 850px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(138, 43, 226, 0.15);
+            transition: var(--transition);
+        }
+
+        .origin-video-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 10px 35px rgba(0, 242, 254, 0.2);
+        }
+
+        .origin-video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .origin-video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Video Before/After Section */
+        .before-after-section {
+            padding: 80px 5%;
+        }
+
+        .video-ba-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            margin: 0 auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            direction: ltr;
+        }
+
+        .video-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .video-layer video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-layer.after-layer {
+            width: 50%;
+            z-index: 2;
+            border-right: 3px solid var(--accent);
+        }
+
+        .video-layer.after-layer video {
+            filter: saturate(180%) contrast(120%) brightness(1.05);
+        }
+
+        .video-layer.before-layer video {
+            filter: grayscale(80%) contrast(85%) brightness(0.85);
+        }
+
+        .ba-slider-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            z-index: 10;
+            cursor: ew-resize;
+            margin: 0;
+        }
+
+        .handle-line {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            height: 100%;
+            width: 3px;
+            background: var(--accent);
+            z-index: 5;
+            pointer-events: none;
+            box-shadow: 0 0 12px var(--accent);
+            transform: translateX(-50%);
+        }
+
+        .handle-circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            border: 3px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #000;
+            font-size: 0.9rem;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.8);
+        }
+
+        .ba-label {
+            position: absolute;
+            top: 15px;
+            padding: 6px 16px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            pointer-events: none;
+            z-index: 6;
+        }
+
+        .ba-label.before-label { right: 15px; }
+        .ba-label.after-label { left: 15px; }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 span {
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        /* Portfolio Gallery */
+        .portfolio-section {
+            padding: 80px 5%;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            direction: ltr;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(0, 242, 254, 0.15);
+        }
+
+        .thumb-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #111;
+            overflow: hidden;
+        }
+
+        .thumb-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .thumb-container img {
+            transform: scale(1.08);
+        }
+
+        /* زر التشغيل */
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.75);
+            width: 55px;
+            height: 55px;
+            background: rgba(138, 43, 226, 0.85);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .portfolio-item:hover .play-icon {
+            opacity: 1;
+            background: var(--accent);
+            color: #000;
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+        }
+
+        .item-info {
+            padding: 18px;
+        }
+
+        .item-category {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 700;
+            direction: ltr;
+            display: block;
+            text-align: right;
+        }
+
+        .item-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 5%;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 30px 20px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 10px;
+            direction: ltr;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 5%;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+        }
+
+        @media (max-width: 850px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent);
+            transform: translateX(-5px);
+        }
+
+        .social-card i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: white;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+            padding: 20px;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            background: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-film"></i>
+            <span>PORTFOLIO</span>
+        </div>
+        <nav>
+            <a href="#about">من أنا</a>
+            <a href="#origin">بداية القصة</a>
+            <a href="#compare">Coloring</a>
+            <a href="#portfolio">معرض الأعمال</a>
+            <a href="#services">الخدمات</a>
+            <a href="#contact" class="btn-nav">احجز مشروعك</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>صناعة وإخراج <span>المحتوى البصري</span></h1>
+        <p>مونتير محترف متخصص في تعديل الألوان، الفيديوهات الترويجية والوثائقية، والموشن جرافيك بأسلوب جذاب وعالي الجودة.</p>
+        <div class="hero-btns">
+            <a href="#portfolio" class="btn btn-primary"><i class="fa-solid fa-play"></i> استعرض الأعمال</a>
+            <a href="#contact" class="btn btn-outline"><i class="fa-solid fa-calendar-check"></i> احجز مشروعك</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-card">
+            <div class="about-img-container">
+                <img src="ph/1A3BF97B-FDF4-4C46-BDB0-E97DCF5DC677.PNG" alt="صورة المونتير" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=80'">
+            </div>
+            <div class="about-content">
+                <h2>ايسر ازهر</h2>
+                <p>
+                     <div> العمر : ٢٤ سنة </div>
+                     <div> الشهادة الاكاديمية : بكالوريوس صيدلة </div>
+                     <div> اللغات : عربي - انكليزي</div>
+                     <div> خبرة 12 سنة في برامج التعديل والتصميم الاحترافية </div>
+                     <div> يوتيوبر سابق وصانع فيديوهات سوشيال ميديا </div>
+                     <div> اعمل حالياً بشكل مستقل مع عملاء خاصين حيث اقدم تجربة مميزة لكل منهم </div>
+                     <div> واطمح لانشاء مشروعي الخاص بالانتاج</div>
+                </p>
+                <div class="about-skills-badges">
+                    <span class="badge">coloring</span>
+                    <span class="badge">promotional-reels</span>
+                    <span class="badge">commercial/advertising</span>
+                    <span class="badge">speed ramp</span>
+                    <span class="badge">documents</span>
+                    <span class="badge">ai</span>
+                    <span class="badge">motion graphic</span>
+                    <span class="badge">3d</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Origin Story Section (من هنا بدأت القصة - فيديو محلي أصلي) -->
+    <section class="origin-section" id="origin">
+        <div class="section-header">
+            <h2>من هنا <span>بدأت القصة</span></h2>
+            <p>أول فيديو قمت بتعديله على الهاتف بأستخدام برنامج ivideoshow في سنه 2014</p>
+        </div>
+        
+        <div class="origin-video-card">
+            <div class="origin-video-wrapper">
+               <video autoplay loop muted playsinline controls>
+                  <source src="first video.mp4" type="video/mp4">
+                  متصفحك لا يدعم تشغيل هذا الفيديو.
+               </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Before/After Section (مقارنة - فيديوهات محلية أصلية) -->
+    <section class="before-after-section" id="compare">
+        <div class="section-header">
+            <h2>مقارنة</h2>
+            <p>حرك السهم يميناً ويساراً لمشاهدة نتيجة التعديل</p>
+        </div>
+        
+        <div class="video-ba-wrapper" id="videoBAWrapper">
+            <div class="video-layer before-layer">
+                <video id="videoBefore" autoplay loop muted playsinline>
+                    <source src="./habl.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="video-layer after-layer" id="afterLayer">
+                <video id="videoAfter" autoplay loop muted playsinline>
+                    <source src="./chapter%202%20intro.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="handle-line" id="handleLine">
+                <div class="handle-circle">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                </div>
+            </div>
+
+            <input type="range" min="0" max="100" value="50" class="ba-slider-input" id="baVideoSlider">
+
+            <span class="ba-label before-label">قبل التعديل</span>
+            <span class="ba-label after-label">بعد التعديل</span>
+        </div>
+    </section>
+
+    <!-- Portfolio Gallery (فيديوهات Google Drive) -->
+    <section class="portfolio-section" id="portfolio">
+        <div class="section-header">
+            <h2>معرض الأعمال</h2>
+            <p>اختر القسم لمشاهدة نماذج الفيديوهات الخاصة به</p>
+        </div>
+
+        <!-- أزرار التصفية -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="coloring">coloring</button>
+            <button class="filter-btn" data-filter="promotional-reels">promotional-reels</button>
+            <button class="filter-btn" data-filter="commercial-advertising">commercial/advertising</button>
+            <button class="filter-btn" data-filter="speed-ramp">speed ramp</button>
+            <button class="filter-btn" data-filter="documents">documents</button>
+            <button class="filter-btn" data-filter="ai">ai</button>
+            <button class="filter-btn" data-filter="motion-graphic">motion graphic</button>
+            <button class="filter-btn" data-filter="3d">3d</button>
+        </div>
+
+        <div class="portfolio-grid">
+            
+            <!-- 1. COLORING -->
+            <div class="portfolio-item" data-category="coloring" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/D815A8E9-E02B-4B8D-8A8D-2D027C1B9968.PNG" alt="coloring" onerror="this.src='https://images.unsplash.com/photo-1518173946687-a4c8a383392e?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">coloring</span><h3 class="item-title">تلوين سينمائي - فيديو 1 </h3></div>
+            </div>
+
+            <!-- 2. PROMOTIONAL-REELS -->
+            <div class="portfolio-item" data-category="promotional-reels" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/9AE956D1-2DA6-4CB7-9B87-80AFED9D3C31.PNG" alt="promotional-reels" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">promotional-reels</span><h3 class="item-title">فيديو ترويجي - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="promotional-reels" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/9AE956D1-2DA6-4CB7-9B87-80AFED9D3C31.PNG" alt="promotional-reels" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">promotional-reels</span><h3 class="item-title">فيديو ترويجي - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="promotional-reels" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/9AE956D1-2DA6-4CB7-9B87-80AFED9D3C31.PNG" alt="promotional-reels" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">promotional-reels</span><h3 class="item-title">فيديو ترويجي - فيديو 3</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="promotional-reels" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/9AE956D1-2DA6-4CB7-9B87-80AFED9D3C31.PNG" alt="promotional-reels" onerror="this.src='https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">promotional-reels</span><h3 class="item-title">فيديو ترويجي - فيديو 4</h3></div>
+            </div>
+
+            <!-- 3. COMMERCIAL/ADVERTISING -->
+            <div class="portfolio-item" data-category="commercial-advertising" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 3</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 4</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 5</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 6</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="commercial-advertising" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/56B21514-2CF5-4970-B619-92E2F6022849.PNG" alt="commercial" onerror="this.src='https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">commercial/advertising</span><h3 class="item-title">إعلان تجاري - فيديو 7</h3></div>
+            </div>
+            
+            <!-- 4. SPEED RAMP -->
+            <div class="portfolio-item" data-category="speed-ramp" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/FC7D9156-855B-4F9F-BA33-A14AB1BF627B.PNG" alt="speed ramp" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">speed ramp</span><h3 class="item-title">سبيد رامب - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="speed-ramp" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/FC7D9156-855B-4F9F-BA33-A14AB1BF627B.PNG" alt="speed ramp" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">speed ramp</span><h3 class="item-title">سبيد رامب - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="speed-ramp" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/FC7D9156-855B-4F9F-BA33-A14AB1BF627B.PNG" alt="speed ramp" onerror="this.src='https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">speed ramp</span><h3 class="item-title">سبيد رامب - فيديو 3</h3></div>
+            </div>
+
+            <!-- 5. DOCUMENTS -->
+            <div class="portfolio-item" data-category="documents" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/854F865B-968F-4530-B2A1-B3DEF6472504.PNG" alt="documents" onerror="this.src='https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">documents</span><h3 class="item-title">وثائقي - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="documents" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/854F865B-968F-4530-B2A1-B3DEF6472504.PNG" alt="documents" onerror="this.src='https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">documents</span><h3 class="item-title">وثائقي - فيديو 2</h3></div>
+            </div>
+
+            <!-- 6. AI -->
+            <div class="portfolio-item" data-category="ai" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 3</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 4</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 5</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 6</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 7</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="ai" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/BA481C78-B35D-4914-8AA7-CC25CF935FE9.PNG" alt="ai" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">ai</span><h3 class="item-title">ذكاء اصطناعي - فيديو 8</h3></div>
+            </div>
+        
+            <!-- 7. MOTION GRAPHIC -->
+            <div class="portfolio-item" data-category="motion-graphic" data-featured="true" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/E9DE113F-6B09-4435-8722-EFDC44131C84.PNG" alt="motion graphic" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">motion graphic</span><h3 class="item-title">موشن جرافيك - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="motion-graphic" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/E9DE113F-6B09-4435-8722-EFDC44131C84.PNG" alt="motion graphic" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">motion graphic</span><h3 class="item-title">موشن جرافيك - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="motion-graphic" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/E9DE113F-6B09-4435-8722-EFDC44131C84.PNG" alt="motion graphic" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">motion graphic</span><h3 class="item-title">موشن جرافيك - فيديو 3</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="motion-graphic" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/E9DE113F-6B09-4435-8722-EFDC44131C84.PNG" alt="motion graphic" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">motion graphic</span><h3 class="item-title">موشن جرافيك - فيديو 4</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="motion-graphic" data-video="https://drive.google.com/file/d/GOOGLE_DRIVE_ID_HERE/preview">
+                <div class="thumb-container"><img src="ph/E9DE113F-6B09-4435-8722-EFDC44131C84.PNG" alt="motion graphic" onerror="this.src='https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">motion graphic</span><h3 class="item-title">موشن جرافيك - فيديو 5</h3></div>
+            </div>
+
+            <!-- 8. 3D -->
+            <div class="portfolio-item" data-category="3d" data-featured="true" data-video="https://drive.google.com/file/d/1mEaMfM5q0jfB7K1-GvKsSBAVKHgw4VWn/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 1 </h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1a8-GhlUGo7AO_yEowKCNJ2YLA6nW24dp/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 2</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1Qd1GqullawAbni1-5rVrWHkmXZcNJ4QW/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 3</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1Z6nYYH6aiJTOCHAsHE59y-1Cd2_LXfm3/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 4</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1VKQgaAoxG7Hl_6s47Qv1LXeydwPAaO0P/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 5</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1plA_4JtIlMXsBzjFVwHACqj1ihuykz6P/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 6</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1osUlmvpWNSRbQjUuojgtYuDzGp8DJ0r1/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 7</h3></div>
+            </div>
+            <div class="portfolio-item" data-category="3d" data-video="https://drive.google.com/file/d/1vErB5jA-fv0eJ986_NxEA7ZbsLxY4Pr_/view?usp=sharing">
+                <div class="thumb-container"><img src="ph/1F106625-755D-407A-A963-A6A15BA821B4.PNG" alt="3d" onerror="this.src='https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80'"><div class="play-icon"><i class="fa-solid fa-play"></i></div></div>
+                <div class="item-info"><span class="item-category">3d</span><h3 class="item-title">تصميم 3D - فيديو 8</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <h2>الخدمات المتاحة</h2>
+            <p>أبرز التخصصات والخدمات المقدمة في المونتاج</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fa-solid fa-wand-magic-sparkles service-icon"></i>
+                <h3>coloring & speed ramp</h3>
+                <p>تعديل ألوان سينمائي مخصص وضبط السرعة لخلق إيقاع مميز.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-bolt service-icon"></i>
+                <h3>promotional-reels & commercial</h3>
+                <p>صناعة إعلانات تجارية وفيديوهات ريلز ترويجية جذابة وعالية التفاعل.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-cube service-icon"></i>
+                <h3>3d & motion graphic</h3>
+                <p>صناعة مشاهد ذكاء اصطناعي وتحريك جرافيك بصري ممتاز.</p>
+            </div>
+            <div class="service-card">
+                <i class="fa-solid fa-robot service-icon"></i>
+                <h3>ai & documents</h3>
+                <p>إنتاج مقاطع وثائقية وتصميم مجسمات وتحريك 3D.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>تواصل معي مباشرة</h3>
+                <p>لطلب مشروع جديد أو الاستفسار عن الخدمات، تواصل عبر القنوات التالية:</p>
+                
+                <div class="social-grid">
+                    <a href="https://wa.me/9647813051294" target="_blank" class="social-card">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <div>
+                            <strong>واتساب / WhatsApp</strong>
+                            <div style="font-size:0.85rem; color:var(--text-muted)">محادثة مباشرة</div>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/ayser_azher?stkn=Y2xxN21ub2FtdGZt" target="_blank" class="social-card">
+                        <i class="fa-brands fa-instagram"></i>
+                        <div>
+                            <strong>إنستغرام / Instagram</strong>
+                            <div style="font-size:0.85rem; color:var(--text-muted)">معرض الأعمال اليومية</div>
+                        </div>
+                    </a>
+                    <a href="mailto:wwwacer3339@gmail.com" class="social-card">
+                        <i class="fa-solid fa-envelope"></i>
+                        <div>
+                            <strong>البريد الإلكتروني</strong>
+                            <div style="font-size:0.85rem; color:var(--text-muted)">للتواصل الرسمي والشركات</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <form class="booking-form" id="whatsappForm">
+                <h3 style="margin-bottom: 10px;">احجز مشروعك</h3>
+                <div class="form-group">
+                    <input type="text" id="clientName" placeholder="الاسم الكريم" required>
+                </div>
+                <div class="form-group">
+                    <select id="projectType" required>
+                        <option value="" disabled selected>اختر نوع الخدمة المطلوب</option>
+                        <option value="coloring">coloring</option>
+                        <option value="promotional-reels">promotional-reels</option>
+                        <option value="commercial/advertising">commercial/advertising</option>
+                        <option value="speed ramp">speed ramp</option>
+                        <option value="documents">documents</option>
+                        <option value="ai">ai</option>
+                        <option value="motion graphic">motion graphic</option>
+                        <option value="3d">3d</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea id="projectDetails" rows="4" placeholder="تفاصيل المشروع (عدد الفيديوهات، المدة المطلوبة...)" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                    <i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر الواتساب
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 | معرض أعمال المونتير</p>
+    </footer>
+
+    <!-- Video Modal Player (معدل ليدعم Google Drive عبر iframe) -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <iframe id="modalIframePlayer" src="" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- JS Logic -->
+    <script>
+        // 1. Slider Before / After
+        const baVideoSlider = document.getElementById('baVideoSlider');
+        const afterLayer = document.getElementById('afterLayer');
+        const handleLine = document.getElementById('handleLine');
+        const videoBefore = document.getElementById('videoBefore');
+        const videoAfter = document.getElementById('videoAfter');
+        const videoBAWrapper = document.getElementById('videoBAWrapper');
+
+        if (baVideoSlider) {
+            baVideoSlider.addEventListener('input', (e) => {
+                const val = e.target.value;
+                if (afterLayer) afterLayer.style.width = `${val}%`;
+                if (handleLine) handleLine.style.left = `${val}%`;
+            });
+
+            if (videoBefore && videoAfter) {
+                videoBefore.addEventListener('play', () => {
+                    videoAfter.play().catch(e => console.log(e));
+                });
+                videoBefore.addEventListener('pause', () => videoAfter.pause());
+            }
+            
+            const resizeVideoAfter = () => {
+                if (videoBAWrapper && videoAfter) {
+                    videoAfter.style.width = `${videoBAWrapper.clientWidth}px`;
+                }
+            };
+            window.addEventListener('resize', resizeVideoAfter);
+            resizeVideoAfter();
+        }
+
+        // 2. Modal Video Player (Google Drive Support)
+        const videoModal = document.getElementById('videoModal');
+        const modalIframePlayer = document.getElementById('modalIframePlayer');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        // دالة لمعالجة روابط Google Drive تلقائياً
+        function formatDriveUrl(url) {
+            if (!url) return '';
+            let cleaned = url.trim();
+            // إذا كان الرابط رابط مشاركة عادي بصيغة /view يتم تحويله إلى /preview
+            if (cleaned.includes('drive.google.com/file/d/')) {
+                const idMatch = cleaned.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+                if (idMatch && idMatch[1]) {
+                    return `https://drive.google.com/file/d/${idMatch[1]}/preview`;
+                }
+            }
+            return cleaned;
+        }
+
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const videoUrl = item.getAttribute('data-video');
+                if (videoUrl && videoUrl.trim() !== '') {
+                    modalIframePlayer.src = formatDriveUrl(videoUrl);
+                    videoModal.classList.add('active');
+                }
+            });
+        });
+
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            modalIframePlayer.src = '';
+        }
+
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeVideoModal);
+        if (videoModal) {
+            videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) closeVideoModal();
+            });
+        }
+
+        // 3. Category Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    const itemCategory = item.getAttribute('data-category');
+                    const isFeatured = item.getAttribute('data-featured') === 'true';
+
+                    if (filter === 'all') {
+                        if (isFeatured) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    } else {
+                        if (itemCategory === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+
+        // تشغيل فلتر All تلقائياً عند الفتح
+        document.querySelector('.filter-btn[data-filter="all"]')?.click();
+
+        // 4. Send via WhatsApp
+        const whatsappForm = document.getElementById('whatsappForm');
+        if (whatsappForm) {
+            whatsappForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const whatsappNumber = "9647813051294"; 
+                const name = document.getElementById('clientName').value;
+                const type = document.getElementById('projectType').value;
+                const details = document.getElementById('projectDetails').value;
+
+                const message = `مرحباً، أود حجز مشروع مونتاج جديد:%0A%0A` +
+                                `👤 *الاسم:* ${encodeURIComponent(name)}%0A` +
+                                `🎬 *نوع الخدمة:* ${encodeURIComponent(type)}%0A` +
+                                `📝 *التفاصيل:* ${encodeURIComponent(details)}`;
+
+                window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+            });
+        }
+    </script>
+</body>
+</html>
